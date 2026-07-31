@@ -1,0 +1,16 @@
+services:
+  hand-gesture:
+    build: .
+    image: hand-gesture-webcam-recog
+    environment:
+      - DISPLAY=${DISPLAY}
+    devices:
+      - /dev/video0:/dev/video0
+      - /dev/video1:/dev/video1
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:ro
+      - ./neural-networks:/app/neural-networks:ro
+    stdin_open: true
+    tty: true
+    ipc: host
+    gpus: all
