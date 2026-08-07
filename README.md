@@ -8,18 +8,17 @@ Ferramenta de reconhecimento de gestos de mão em tempo real usando Redes Neurai
 .
 ├── README.md
 ├── hand-gesture-webcam-recog/          # Aplicação principal
-│   ├── main.py                         # Fluxo da aplicação (webcam + inferência)
-│   ├── Dockerfile                      # Definição da imagem da aplicação
-│   ├── docker-compose.yml              # Orquestração do serviço (webcam, display, GPU)
-│   ├── pyproject.toml                  # Dependências e metadados do projeto
-│   ├── uv.lock                        # Versões travadas das dependências
-│   ├── .python-version                # Versão do Python utilizada
-│   ├── .dockerignore                   # Arquivos ignorados no build da imagem
-│   └── neural-networks/                # Checkpoints dos modelos treinados
-│       ├── baseline/                   # modelo_baseline.pth
-│       ├── transfer-learning/          # modelo_transfer_learning.pth
-│       └── fine-tuning/                # modelo_finetuning.pth
-└── neural-networks/                    # Diretório reservado na raiz (vazio)
+   ├── main.py                         # Fluxo da aplicação (webcam + inferência)
+   ├── Dockerfile                      # Definição da imagem da aplicação
+   ├── docker-compose.yml              # Orquestração do serviço (webcam, display, GPU)
+   ├── pyproject.toml                  # Dependências e metadados do projeto
+   ├── uv.lock                        # Versões travadas das dependências
+   ├── .python-version                # Versão do Python utilizada
+   ├── .dockerignore                   # Arquivos ignorados no build da imagem
+   └── neural-networks/                # Checkpoints dos modelos treinados
+       ├── baseline/                   # modelo_baseline.pth
+       ├── transfer-learning/          # modelo_transfer_learning.pth
+       └── fine-tuning/                # modelo_finetuning.pth
 ```
 
 ## Funcionamento
