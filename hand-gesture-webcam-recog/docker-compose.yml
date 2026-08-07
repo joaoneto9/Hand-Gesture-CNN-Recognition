@@ -1,0 +1,18 @@
+services:
+  hand-gesture:
+    build: .
+    image: hand-gesture-webcam-recog
+    environment:
+      - DISPLAY=${DISPLAY}
+      - XAUTHORITY=/tmp/.Xauthority
+    devices:
+      - /dev/video0:/dev/video0
+      - /dev/video1:/dev/video1
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:ro
+      - ${XAUTHORITY:-/run/user/1000/gdm/Xauthority}:/tmp/.Xauthority:ro
+      - ./neural-networks:/app/neural-networks:ro
+    stdin_open: true
+    tty: true
+    ipc: host
+    gpus: all
