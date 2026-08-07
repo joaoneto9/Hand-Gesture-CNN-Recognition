@@ -12,8 +12,8 @@ NEURAL_NETWORK_MAP = {
     "3": "fine-tuning",
 }
 
-INFERENCE_INTERVAL_SECONDS = 1.0
-GUESS_CONFIDENCE_THRESHOLD = 0.70
+INFERENCE_INTERVAL_SECONDS = 1.15
+GUESS_CONFIDENCE_THRESHOLD = 0.60
 SNAPSHOT_SIZE = 180
 
 
@@ -131,6 +131,9 @@ def infer(
 
 def run_webcam(model: torch.nn.Module, device: torch.device, checkpoint: dict) -> None:
     capture = cv2.VideoCapture(0)
+    capture.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+    capture.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
+    capture.set(cv2.CAP_PROP_FPS, 60)
 
     if not capture.isOpened():
         print("Não foi possível abrir a webcam.")
@@ -156,7 +159,7 @@ def run_webcam(model: torch.nn.Module, device: torch.device, checkpoint: dict) -
             if confidence >= GUESS_CONFIDENCE_THRESHOLD:
                 label_text = f"{class_name} {confidence:.0%}"
             else:
-                label_text = f"Chute! {confidence:.0%}"
+                label_text = ""
 
             last_inference_time = now
 
